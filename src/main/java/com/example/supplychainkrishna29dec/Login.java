@@ -1,9 +1,9 @@
-package com.example.ecommerceapp30deckrishna;
+package com.example.supplychainkrishna29dec;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 public class Login {
     public static byte[] getSHA(String input) {
@@ -18,9 +18,8 @@ public class Login {
 
     private String getEncryptedPassword(String password) {
         try {
-            BigInteger number = new BigInteger(1, getSHA(password));
-            StringBuilder hexString = new StringBuilder(number.toString(16));
-            return hexString.toString();
+            BigInteger number = new BigInteger(1, Objects.requireNonNull(getSHA(password)));
+            return number.toString(16);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,6 +28,6 @@ public class Login {
 
     public static void main(String[] args) {
         Login login = new Login();
-        System.out.println(login.getEncryptedPassword("abc234"));
+        System.out.println(login.getEncryptedPassword("abc123"));
     }
 }

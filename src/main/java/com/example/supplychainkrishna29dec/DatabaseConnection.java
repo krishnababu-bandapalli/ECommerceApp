@@ -1,4 +1,4 @@
-package com.example.ecommerceapp30deckrishna;
+package com.example.supplychainkrishna29dec;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,6 +4,6 @@ module com.example.ecommerceapp {
     requires java.sql;
 
 
-    opens com.example.ecommerceapp30deckrishna to javafx.fxml;
-    exports com.example.ecommerceapp30deckrishna;
+    opens com.example.supplychainkrishna29dec to javafx.fxml;
+    exports com.example.supplychainkrishna29dec;
 }

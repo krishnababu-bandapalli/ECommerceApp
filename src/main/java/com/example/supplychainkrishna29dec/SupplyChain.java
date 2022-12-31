@@ -1,4 +1,4 @@
-package com.example.ecommerceapp30deckrishna;
+package com.example.supplychainkrishna29dec;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 public class SupplyChain extends Application {
 
+    ProductDetails productDetails = new ProductDetails();
     GridPane getHeaderBar() {
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search product");
@@ -25,7 +26,7 @@ public class SupplyChain extends Application {
 
         headerBar.add(searchTextField,0,0);
         headerBar.add(searchButton,1,0);
-        headerBar.setPrefSize(600,50);
+        headerBar.setPrefSize(600,100);
         headerBar.setAlignment(Pos.CENTER);
         return headerBar;
     }
@@ -46,6 +47,7 @@ public class SupplyChain extends Application {
         loginButton.setAlignment(Pos.CENTER);
 
         GridPane loginPage = new GridPane();
+        loginPage.setTranslateX(-40);
         loginPage.setVgap(5);
         loginPage.add(emailTextField,0,0);
         loginPage.add(passwordField,0,1);
@@ -56,7 +58,7 @@ public class SupplyChain extends Application {
 
     GridPane getBodyPane() {
         GridPane bodyPane = new GridPane();
-        bodyPane.setAlignment(Pos.CENTER);
+//        bodyPane.setAlignment(Pos.CENTER);
 
         bodyPane.add(getLoginPage(),0,1);
         return bodyPane;
@@ -65,7 +67,8 @@ public class SupplyChain extends Application {
         BorderPane root = new BorderPane();
 
         root.setTop(getHeaderBar());
-        root.setCenter(getBodyPane());
+        root.setRight(getBodyPane());
+        root.setLeft(productDetails.getAllProducts());
         return root;
     }
     @Override
