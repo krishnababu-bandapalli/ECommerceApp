@@ -18,17 +18,51 @@ public class ProductDetails {
         TableColumn price = new TableColumn("Price");
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        ObservableList<Product> data = FXCollections.observableArrayList();
-        data.add(new Product(1, "Lenovo", 1999.9));
-        data.add(new Product(2, "Samsung", 29999.9));
-        data.add(new Product(3, "HP", 3999.9));
+//        ObservableList<Product> data = FXCollections.observableArrayList();
+//        data.add(new Product(1, "Lenovo", 1999.9));
+//        data.add(new Product(2, "Samsung", 29999.9));
+//        data.add(new Product(3, "HP", 3999.9));
+
+        ObservableList<Product> products = Product.getProducts();
 
         productTable = new TableView<>();
-        productTable.setItems(data);
+        productTable.setItems(products);
         productTable.getColumns().addAll(id,name,price);
+        productTable.setMinSize(SupplyChain.width, SupplyChain.height-SupplyChain.header);
+        productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         Pane tablePane = new Pane();
-        tablePane.setTranslateX(40);
+//        tablePane.setTranslateX(40);
+//        tablePane.setTranslateY(20);
+        tablePane.getChildren().add(productTable);
+
+        return tablePane;
+    }
+
+    public Pane getProductsByName(String productName) {
+        TableColumn id = new TableColumn("ID");
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn name = new TableColumn("Name");
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn price = new TableColumn("Price");
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+//        ObservableList<Product> data = FXCollections.observableArrayList();
+//        data.add(new Product(1, "Lenovo", 1999.9));
+//        data.add(new Product(2, "Samsung", 29999.9));
+//        data.add(new Product(3, "HP", 3999.9));
+
+        ObservableList<Product> products = Product.getProductsByName(productName);
+
+        productTable = new TableView<>();
+        productTable.setItems(products);
+        productTable.getColumns().addAll(id,name,price);
+        productTable.setMinSize(SupplyChain.width, SupplyChain.height-SupplyChain.header);
+        productTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        Pane tablePane = new Pane();
+//        tablePane.setTranslateX(40);
+//        tablePane.setTranslateY(20);
         tablePane.getChildren().add(productTable);
 
         return tablePane;

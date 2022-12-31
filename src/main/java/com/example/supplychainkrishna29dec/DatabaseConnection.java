@@ -33,17 +33,17 @@ public class DatabaseConnection {
         return null;
     }
 
-    public static void main(String[] args) {
-        DatabaseConnection databaseConnection = new DatabaseConnection();
-        ResultSet resultSet = databaseConnection.getQueryTable("SELECT * FROM customer;");
-        try {
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("email") + " " + resultSet.getString("password") + " " +
-                        resultSet.getString("first_name") + " " + resultSet.getString("mobile_number"));
-        }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        DatabaseConnection databaseConnection = new DatabaseConnection();
+//        ResultSet resultSet = databaseConnection.getQueryTable("SELECT * FROM customer;");
+//        try {
+//            while (resultSet.next()) {
+//                System.out.println(resultSet.getString("email") + " " + resultSet.getString("password") + " " +
+//                        resultSet.getString("first_name") + " " + resultSet.getString("mobile_number"));
+//        }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

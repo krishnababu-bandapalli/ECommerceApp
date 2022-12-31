@@ -26,8 +26,8 @@ public class Login {
         return null;
     }
 
-    public static void main(String[] args) {
-        Login login = new Login();
-        System.out.println(login.getEncryptedPassword("abc123"));
-    }
+//    public static void main(String[] args) {
+//        Login login = new Login();
+//        System.out.println(login.getEncryptedPassword("abc123"));
+//    }
 }
