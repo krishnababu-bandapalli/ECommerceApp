@@ -4,10 +4,13 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -18,37 +21,56 @@ public class SupplyChain extends Application {
 
     ProductDetails productDetails = new ProductDetails();
     GridPane getHeaderBar() {
+        Image logo = new Image("C:\\Users\\krish_uv7qyqm\\IdeaProjects\\ECommerceApp\\src\\main\\eShopLogo.png");
+        ImageView imageView = new ImageView(logo);
+        imageView.setImage(logo);
+        imageView.setFitWidth(40);
+        imageView.setFitHeight(40);
+
+        Button logoButton = new Button();
+        logoButton.setGraphic(imageView);
+        logoButton.setStyle("-fx-background-color: Black");
+        logoButton.setCursor(Cursor.OPEN_HAND);
+        logoButton.setPrefSize(40,40);
+        logoButton.setTranslateX(-130);
+
+        logoButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                root.setLeft(null);
+                root.setLeft(getLoginPage());
+            }
+        });
+
         TextField searchTextField = new TextField();
         searchTextField.setPromptText("Search product");
         searchTextField.setPrefWidth(200);
-        searchTextField.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String productName = searchTextField.getText();
 
-                root.setLeft(null);
-                root.setLeft(productDetails.getProductsByName(productName));
-            }
+        searchTextField.setOnAction(actionEvent -> {
+            String productName = searchTextField.getText();
+
+            root.setLeft(null);
+            root.setLeft(productDetails.getProductsByName(productName));
         });
 
         Button searchButton = new Button("Search");
         searchButton.setPrefWidth(100);
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String productName = searchTextField.getText();
 
-                root.setLeft(null);
-                root.setLeft(productDetails.getProductsByName(productName));
-            }
+        searchButton.setOnAction(actionEvent -> {
+            String productName = searchTextField.getText();
+
+            root.setLeft(null);
+            root.setLeft(productDetails.getProductsByName(productName));
         });
 
         GridPane headerBar = new GridPane();
         headerBar.setHgap(5);
         headerBar.setStyle("-fx-background-color: Black");
 
-        headerBar.add(searchTextField,0,0);
-        headerBar.add(searchButton,1,0);
+//        headerBar.add(imageView,0,0);
+        headerBar.add(logoButton,0,0);
+        headerBar.add(searchTextField,1,0);
+        headerBar.add(searchButton,2,0);
         headerBar.setPrefSize(width,header);
         headerBar.setAlignment(Pos.CENTER);
         return headerBar;
